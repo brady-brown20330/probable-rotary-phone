@@ -6,6 +6,7 @@ export const Game = makeSprite({
   init({ device, preloadFiles, updateState }) {
     preloadFiles({
       imageFileNames: ["bird.png"],
+      audioFileNames: ["boop.wav"],
     }).then(() => {
       updateState((state) => {
         return { ...state, view: "menu" };
