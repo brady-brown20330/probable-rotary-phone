@@ -1,11 +1,11 @@
 import { makeSprite } from "@replay/core";
-import { Bird } from "./bird";
+import { Level } from "./level";
 
 export const Game = makeSprite({
   render() {
     return [
-      Bird({
-        id: "bird",
+      Level({
+        id: "level",
       }),
     ];
   },
@@ -16,6 +16,7 @@ export const gameProps = {
   size: {
     width: 400,
     height: 600,
+    maxHeightMargin: 150,
   },
   defaultFont: {
     name: "Helvetica",
