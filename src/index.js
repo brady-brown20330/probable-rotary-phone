@@ -4,7 +4,7 @@ import { Menu } from "./menu";
 
 export const Game = makeSprite({
   init() {
-    return { view: "menu" };
+    return { view: "menu", attempt: 0 };
   },
 
   render({ state, updateState }) {
@@ -12,8 +12,16 @@ export const Game = makeSprite({
 
     return [
       Level({
-        id: "level",
+        id: `level-${state.attempt}`,
         paused: inMenuScreen,
+        gameOver: () => {
+          updateState((prevState) => {
+            return {
+              ...prevState,
+              view: "menu",
+            };
+          });
+        },
       }),
       inMenuScreen
         ? Menu({
@@ -23,6 +31,7 @@ export const Game = makeSprite({
                 return {
                   ...prevState,
                   view: "level",
+                  attempt: prevState.attempt + 1,
                 };
               });
             },
